@@ -3,13 +3,7 @@ from math import sqrt, sin, cos, exp
 from tools import line_input
 
 
-if __name__ == '__main__':
-    print("Lab 3")
-    print('*' * 15, " Task 1 ", '*' * 15)
-
-    print("x a = ")
-    x, a = line_input(float)[:2]
-
+def task_1(x, a):
     if x > a:
         y = x * sqrt(x - a)
     elif x == a:
@@ -17,15 +11,10 @@ if __name__ == '__main__':
     else:
         y = exp(-a * x) * cos(a * x)
 
-    print("y = ", y, '\n')
+    return y
 
-# --------------------------------------------
 
-    print('*' * 15, " Task 2 ", '*' * 15)
-
-    print("N = ")
-    years = int(input())
-
+def task_2(years):
     if 9 < years < 21:
         suffics = 'лет'
     elif years % 10 == 1:
@@ -34,5 +23,17 @@ if __name__ == '__main__':
         suffics = 'года'
     else:
         suffics = 'лет'
+    
+    return suffics
 
-    print(years, suffics)
+
+if __name__ == '__main__':
+    print("Task 1 ")
+    print("[x a] = ")
+    x, a = line_input(float)[:2]
+    print("y = ", task_1(x, a), '\n')
+
+    print("\nTask 2")
+    print("years = ")
+    years = int(input())
+    print(years, task_2(years))

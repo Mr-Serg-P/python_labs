@@ -1,6 +1,6 @@
 from random import randint
 
-from tools import line_input
+from tools import line_input, print_array
 
 
 def task_1(n):
@@ -23,12 +23,12 @@ def task_2(n, m):
 def task_3(in_array, x):
     strings = 0
 
-    for i in range(len(in_array)):
+    for row in in_array:
         elements = 0
-        for j in range(len(in_array[i])):
-            if x == in_array[i][j] % 10:
+        for i in range(len(row)):
+            if x == row[i] % 10:
                 elements += 1
-        if 0 < elements < int(len(in_array) / 2):
+        if elements < int(len(row) / 2):
             strings += 1
         
     return strings
@@ -43,26 +43,43 @@ def task_4(in_array, row, col):
     return items
 
 
+def task_5(in_array):
+    return list(zip(*in_array[::-1]))
+
+
 if __name__ == '__main__':
-    # print("n = ")
-    # print(task_1(10))
+    print('Task 1')
+    print("edge_size = ")
+    print_array(task_1(int(input())))
 
     # print("n m = ")
     # print(task_2(line_input()[:2]))
 
-    # print("n m x =")
-    # n, m, x = line_input(int)[:3]
-    # arr = []
-    # print("enter array:")
-    # for _ in range(n):
-    #     print("line %i" % _)
-    #     arr.append(line_input(int)[:n])
-    # print('-' * 20)
-    # print(task_3(arr, 1))
+    print('\nTask 3')
+    print("[row_size col_size start_digit] =")
+    row_size, col_size, start_digit = line_input(int)[:3]
+    in_array = [[randint(0, 50) for _ in range(row_size)] for _ in range(col_size)]
+    print('-' * 50 + '\nINPUT:')
+    print_array(in_array)
+    print('-' * 50 + '\n')
+    print(task_3(in_array, start_digit))
 
-    # print("k s p = ")
-    # k = line_input(int)[:3]
-    # print array
-    [print(item) for item in task_4([[randint(0, 50) for _ in range(15)] for _ in range(15)], 2, 9)]
+    print('\nTask 4')
+    print("[edge_size row col] = ")
+    edge_size, row, col = line_input(int)[:3]
+    in_array = [[randint(0, 50) for _ in range(edge_size)] for _ in range(edge_size)]
+    print('-' * 50 + '\nINPUT:')
+    print_array(in_array)
+    print('-' * 50 + '\n')
+    print_array(task_4(in_array, row, col))
 
+    print('\nTask 5')
+    in_array = [
+        [1, 2, 3, 4, 5,],
+        [6, 7, 8, 9, 10,],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25],
+    ]
+    print_array(task_5(in_array))
     

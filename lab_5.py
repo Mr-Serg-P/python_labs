@@ -38,15 +38,16 @@ def task_3(max):
 
 
 if __name__ == '__main__':
+    print("Task 1")
     print("a b = ")
     a, b = line_input(float)[:2]
-    
     for row in task_1(a, b):
         print(*row, sep='\t\t')
-
-    print("n = ")
+    
+    print("\nTask 2")
+    print("n = ")   # 153 - Armstrong's number
     n = input()
     print("%s is Armstrong's number" % n if task_2(int(n), len(n)) == int(n) else "%s Isn't Armstrong's number" % n)
 
+    print("\nTask 3")
     print(*task_3(float(input())))
-

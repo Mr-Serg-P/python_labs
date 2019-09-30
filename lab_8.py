@@ -61,18 +61,23 @@ def task_2(arr):
         num_str = str(arr[i])
 
         if (num_str.find('.') != -1) and (num_str[num_str.find('.') + 1] == '8'):
-            start = i if start == -1 else start
+            start = i + 1 if start == -1 else start
             stop = i
     
     return selection_sort(arr, start, stop, True)
 
     
 if __name__ == "__main__":
+    print('Task 1')
     print("Array length:")
     arr = [randint(150, 200) for _ in range(int(input()))]
+    print('-' * 20, 'INPUT:', arr, '-' * 20, sep='\n')
     print("Sum of even numbers with 2 zeros: %i\nMax not prime: %i" % task_1(arr))
 
-    print("start stop array_length = ")
-    start, stop, arr_len = line_input(float)[:3]
-    arr = [uniform(start, stop) for _ in range(int(arr_len))]
+    print('\nTask 2')
+    # print("start stop array_length = ")
+    # start, stop, arr_len = line_input(float)[:3]
+    # arr = [uniform(start, stop) for _ in range(int(arr_len))]
+    arr = [0.2, 0.8, 0.5, -0.11, 10.1, 0.001, 0.98, 0.801, -1000.1]
+    print('-' * 20, 'INPUT:', arr, '-' * 20, sep='\n')
     print(task_2(arr))
